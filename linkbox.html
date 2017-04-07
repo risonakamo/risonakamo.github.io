@@ -1,0 +1,104 @@
+<link rel="import" href="polymer/polymer.html">
+
+<dom-module id="link-box">
+    <template>
+        <style>
+            :host
+            {
+                display: inline-block;
+                width: 200px;
+                height: 450px;
+                background-color: var(--background-color);
+                overflow: hidden;
+                box-shadow: 0 0 40px rgba(0,0,0,.2);
+            }
+
+            a
+            {
+                text-decoration: none;
+                color: black;
+            }
+
+            img
+            {
+                width: 200px;
+                height: 450px;
+                transition-property: opacity;
+                transition-duration: .2s;
+            }
+
+            p
+            {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 20px;
+            }
+
+            #texbox
+            {
+                position: relative;
+                display: table;
+                bottom: 0;
+                width: 200px;
+                height: 100px;
+                background-color: white;
+                z-index: 10;
+                transition-property: transform;
+                transition-duration: .2s;
+            }
+
+            .faded
+            {
+                opacity: .5;
+            }
+
+            .slideup
+            {
+                transform: translateY(-100px);
+            }
+        </style>
+
+        <a on-mouseenter="hovering" on-mouseleave="unhover" href="{{href}}">
+            <img id="img" src="{{img}}">
+
+            <div id="texbox">
+                <p><slot></slot></p>
+            </div>
+        </a>
+
+    </template>
+
+    <script>
+        class linkBox extends Polymer.Element
+        {
+            static get is()
+            {
+                return "link-box";
+            }
+
+            static get properties()
+            {
+                return {
+                    img:String,
+                    href:String
+                };
+            }
+
+            hovering(e)
+            {
+                this.$.img.classList.add("faded");
+                this.$.texbox.classList.add("slideup");
+            }
+
+            unhover(e)
+            {
+                this.$.img.classList.remove("faded");
+                this.$.texbox.classList.remove("slideup");
+            }
+        }
+
+        customElements.define(linkBox.is,linkBox);
+    </script>
+
+</dom-module>
