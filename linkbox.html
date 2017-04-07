@@ -8,9 +8,10 @@
                 display: inline-block;
                 width: 200px;
                 height: 450px;
-                background-color: var(--background-color);
+                background-color: var(--background-color,rgba(0,0,0,0));
                 overflow: hidden;
                 box-shadow: 0 0 40px rgba(0,0,0,.2);
+                z-index: 11;
             }
 
             a
@@ -33,6 +34,7 @@
                 text-align: center;
                 vertical-align: middle;
                 font-size: 20px;
+                padding: 3px;
             }
 
             #texbox
@@ -50,7 +52,7 @@
 
             .faded
             {
-                opacity: .5;
+                opacity: var(--fade-opacity,.85);
             }
 
             .slideup
@@ -59,7 +61,7 @@
             }
         </style>
 
-        <a on-mouseenter="hovering" on-mouseleave="unhover" href="{{href}}">
+        <a id="top" href="{{href}}">
             <img id="img" src="{{img}}">
 
             <div id="texbox">
@@ -81,20 +83,40 @@
             {
                 return {
                     img:String,
-                    href:String
+                    href:String,
+                    hoverdisable:Boolean
                 };
             }
 
-            hovering(e)
+            ready()
             {
-                this.$.img.classList.add("faded");
-                this.$.texbox.classList.add("slideup");
-            }
+                super.ready();
 
-            unhover(e)
-            {
-                this.$.img.classList.remove("faded");
-                this.$.texbox.classList.remove("slideup");
+                if (this.hoverdisable==null)
+                {
+                    this.$.top.addEventListener("mouseenter",()=>{
+                        this.$.img.classList.add("faded");
+                        this.$.texbox.classList.add("slideup");
+                    });
+
+                    this.$.top.addEventListener("mouseleave",()=>{
+                        this.$.img.classList.remove("faded");
+                        this.$.texbox.classList.remove("slideup");                        
+                    });
+                }
+
+                else
+                {
+                    this.$.texbox.classList.add("slideup");
+
+                    this.$.top.addEventListener("mouseenter",()=>{
+                        this.$.img.classList.add("faded");
+                    });
+
+                    this.$.top.addEventListener("mouseleave",()=>{
+                        this.$.img.classList.remove("faded");
+                    });
+                }
             }
         }
 

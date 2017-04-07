@@ -10,5 +10,6 @@ body
 
 link-box
 {
-    --background-color: red;
+    --background-color: white;
+    --fade-opacity: .8;
 }
