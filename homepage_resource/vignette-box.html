@@ -14,7 +14,7 @@ vignetteImgs (json)
             :host
             {
                 width: 1000px;
-                max-height: 600px;
+                height: 600px;
                 position: relative;
                 display: block;   
             }
@@ -116,7 +116,7 @@ vignetteImgs (json)
                             return;
                         }
 
-                        if (this.$.vig.height>this.$.vig.width)
+                        if (this.$.vig.height>this.$.vig.width || this.$.vig.height>600)
                         {
                             this.$.vig.classList.add("tall");
                             this.$.vig.classList.remove("wide");
