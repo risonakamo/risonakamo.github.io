@@ -59,6 +59,12 @@
             {
                 transform: translateY(-100px);
             }
+
+            .disabled
+            {
+                filter: grayscale(100%);
+                cursor: not-allowed;
+            }
         </style>
 
         <a id="top" href="{{href}}">
@@ -84,7 +90,8 @@
                 return {
                     img:String,
                     href:String,
-                    hoverdisable:Boolean
+                    hoverdisable:Boolean,
+                    disabled:Boolean
                 };
             }
 
@@ -116,6 +123,11 @@
                     this.$.top.addEventListener("mouseleave",()=>{
                         this.$.img.classList.remove("faded");
                     });
+                }
+
+                if (this.disabled!=null)
+                {
+                    this.$.top.classList.add("disabled");
                 }
             }
         }
