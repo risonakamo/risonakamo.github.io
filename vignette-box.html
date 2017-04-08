@@ -5,15 +5,29 @@
         <style>
             :host
             {
+                position: relative;
                 display: block;   
-                overflow: hidden;
             }
 
-            img
+            #vig
             {
-                
+                margin: auto;
+                display: block;
+            }
+
+            .bubble
+            {
+                position: absolute;
+                display: block;
+                bottom: -50px;
+                width: var(--bubble-size,300px);
             }
             
+            .texbox
+            {
+                position: absolute;
+            }
+
             .wide
             {
                 width: 100%;
@@ -31,6 +45,7 @@
         </style>
 
         <img id="vig" class="wide hidden" src="{{vsrc}}">
+        <img class="bubble" src="texbubble.png">
 
     </template>
 
