@@ -1,4 +1,4 @@
-<link rel="import" href="polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
 
 <!--
 custom css:
@@ -97,7 +97,7 @@ vignetteImgs (json)
                 super.ready();
 
                 var vget=new XMLHttpRequest;
-                vget.open("GET","vignetteImgs");
+                vget.open("GET","homepage_resource/vignetteImgs");
                 vget.responseType="json";
                 vget.onreadystatechange=()=>{
                     if (vget.readyState!=4)
