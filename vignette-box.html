@@ -1,0 +1,97 @@
+<link rel="import" href="polymer/polymer.html">
+
+<dom-module id="vignette-box">
+    <template>
+        <style>
+            :host
+            {
+                display: block;   
+                overflow: hidden;
+            }
+
+            img
+            {
+                
+            }
+            
+            .wide
+            {
+                width: 100%;
+            }
+
+            .tall
+            {
+                height: 100%;
+            }
+
+            .hidden
+            {
+                opacity: 0;
+            }
+        </style>
+
+        <img id="vig" class="wide hidden" src="{{vsrc}}">
+
+    </template>
+
+    <script>
+        class vignetteBox extends Polymer.Element
+        {
+            static get is()
+            {
+                return "vignette-box";
+            }
+
+            static get properties()
+            {
+                return {
+                    
+                };
+            }
+
+            ready()
+            {
+                super.ready();
+
+                var vget=new XMLHttpRequest;
+                vget.open("GET","vignetteImgs");
+                vget.responseType="json";
+                vget.onreadystatechange=()=>{
+                    if (vget.readyState!=4)
+                    {
+                        return;
+                    }
+
+                    console.log(vget.response);
+
+                    this.vsrc=vget.response.imgs[Math.floor(Math.random()*vget.response.imgs.length)];
+
+                    var calcTallWide=()=>{
+                        if (this.$.vig.height==0 || this.$.vig.width==0)
+                        {
+                            setTimeout(calcTallWide,100);
+                            return;
+                        }
+
+                        if (this.$.vig.height>this.$.vig.width)
+                        {
+                            this.$.vig.classList.add("tall");
+                            this.$.vig.classList.remove("wide");
+                        }
+
+                        this.$.vig.classList.remove("hidden");
+                    };
+
+                    calcTallWide();
+                };
+
+                vget.send();
+
+            }
+
+        }
+
+        customElements.define(vignetteBox.is,vignetteBox);
+    </script>
+
+</dom-module>

@@ -4,12 +4,24 @@ body
 {
     margin: 0;
     background-image: url("bluesquare.png");
-    font-family: roboto;
+    font-family: meiryo;
     font-size: 0;
+}
+
+.vignettebox
+{
+    width: 1000px;
+    max-height: 600px;
+}
+
+.linkbox-wrap
+{
+    position: relative;
+    width: 1000px;
+    margin: auto;
 }
 
 link-box
 {
     --background-color: white;
-    --fade-opacity: .8;
 }
