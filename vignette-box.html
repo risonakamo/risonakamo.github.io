@@ -1,10 +1,20 @@
 <link rel="import" href="polymer/polymer.html">
 
+<!--
+custom css:
+--bubble-font-size: font size for bubble
+
+ajax:
+vignetteImgs (json)
+-->
+
 <dom-module id="vignette-box">
     <template>
         <style>
             :host
             {
+                width: 1000px;
+                max-height: 600px;
                 position: relative;
                 display: block;   
             }
@@ -13,16 +23,34 @@
             {
                 margin: auto;
                 display: block;
+                box-shadow: 0 0 40px rgba(0,0,0,.2);
             }
 
             .bubble
             {
                 position: absolute;
-                display: block;
-                bottom: -50px;
-                width: var(--bubble-size,300px);
+                display: table;
+                bottom: -10px;
+                left: -40px;
+                background-image:url("texbubble.png");
+                background-size: 100%;
+                width: 300px;
+                height: 300px;
+                box-sizing: border-box;
+                padding: 50px;
+                font-size: var(--bubble-font-size,40px);
             }
             
+            .bubble p
+            {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                color: #581431;
+                margin: auto;
+                transform: rotate(10deg);
+            }
+
             .texbox
             {
                 position: absolute;
@@ -45,7 +73,7 @@
         </style>
 
         <img id="vig" class="wide hidden" src="{{vsrc}}">
-        <img class="bubble" src="texbubble.png">
+        <div class="bubble"><p>{{texline}}</p></div>
 
     </template>
 
@@ -77,9 +105,9 @@
                         return;
                     }
 
-                    console.log(vget.response);
-
                     this.vsrc=vget.response.imgs[Math.floor(Math.random()*vget.response.imgs.length)];
+
+                    this.texline=vget.response.text[Math.floor(Math.random()*vget.response.text.length)];
 
                     var calcTallWide=()=>{
                         if (this.$.vig.height==0 || this.$.vig.width==0)

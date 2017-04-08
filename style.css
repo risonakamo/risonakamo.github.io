@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+@font-face
+{
+    font-family: elephant;
+    src: url("elephant.ttf");
+}
+
 body
 {
     margin: 0;
@@ -10,10 +16,10 @@ body
 
 .vignettebox
 {
-    width: 1000px;
-    max-height: 600px;
     margin: auto;
     margin-bottom: 50px;
+    font-family: "elephant";
+    --bubble-font-size: 53px;
 }
 
 .linkbox-wrap
