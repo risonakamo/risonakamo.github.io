@@ -67,7 +67,7 @@
             }
         </style>
 
-        <a id="top" href="{{href}}">
+        <a id="top" on-mouseenter="mhover" on-mouseleave="mhoverleave" href="{{href}}">
             <img id="img" src="{{img}}">
 
             <div id="texbox">
@@ -99,35 +99,34 @@
             {
                 super.ready();
 
-                if (this.hoverdisable==null)
-                {
-                    this.$.top.addEventListener("mouseenter",()=>{
-                        this.$.img.classList.add("faded");
-                        this.$.texbox.classList.add("slideup");
-                    });
-
-                    this.$.top.addEventListener("mouseleave",()=>{
-                        this.$.img.classList.remove("faded");
-                        this.$.texbox.classList.remove("slideup");                        
-                    });
-                }
-
-                else
+                if (this.hoverdisable!=null)
                 {
                     this.$.texbox.classList.add("slideup");
-
-                    this.$.top.addEventListener("mouseenter",()=>{
-                        this.$.img.classList.add("faded");
-                    });
-
-                    this.$.top.addEventListener("mouseleave",()=>{
-                        this.$.img.classList.remove("faded");
-                    });
                 }
 
                 if (this.disabled!=null)
                 {
                     this.$.top.classList.add("disabled");
+                }
+            }
+
+            mhover(e)
+            {
+                this.$.img.classList.add("faded");
+
+                if (this.hoverdisable==null)
+                {
+                    this.$.texbox.classList.add("slideup");
+                }
+            }
+
+            mhoverleave(e)
+            {
+                this.$.img.classList.remove("faded");
+
+                if (this.hoverdisable==null)
+                {
+                    this.$.texbox.classList.remove("slideup");       
                 }
             }
         }
