@@ -50,12 +50,12 @@
                 transition-duration: .2s;
             }
 
-            .faded
+            #top:hover img
             {
                 opacity: var(--fade-opacity,.8);
             }
 
-            .slideup
+            #top:hover #texbox
             {
                 transform: translateY(-100px);
             }
@@ -67,7 +67,7 @@
             }
         </style>
 
-        <a id="top" on-mouseenter="mhover" on-mouseleave="mhoverleave" href="{{href}}">
+        <a id="top" href="{{href}}">
             <img id="img" src="{{img}}">
 
             <div id="texbox">
@@ -107,26 +107,6 @@
                 if (this.disabled!=null)
                 {
                     this.$.top.classList.add("disabled");
-                }
-            }
-
-            mhover(e)
-            {
-                this.$.img.classList.add("faded");
-
-                if (this.hoverdisable==null)
-                {
-                    this.$.texbox.classList.add("slideup");
-                }
-            }
-
-            mhoverleave(e)
-            {
-                this.$.img.classList.remove("faded");
-
-                if (this.hoverdisable==null)
-                {
-                    this.$.texbox.classList.remove("slideup");       
                 }
             }
         }
