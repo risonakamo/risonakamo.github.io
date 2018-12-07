@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+html
+{
+    HEIGHT: 100%;
+}
+
+body
+{
+    DISPLAY: FLEX;
+    HEIGHT: 100%;
+    MARGIN: 0;
+    BACKGROUND-COLOR: #000;
+    COLOR: #FFF;
+    JUSTIFY-CONTENT: CENTER;
+    ALIGN-ITEMS: CENTER;
+    FONT-SIZE: 16.6PX;
+    COLOR: #C0939A;
+    FONT-FAMILY: "MEIRYO","TIMES NEW ROMAN";
+}
+
+p,a
+{
+    MARGIN: 15PX 0 15PX 0;
+}
+
+a
+{
+    COLOR: #9AD9D4;
+    TEXT-DECORATION: NONE;
+}
+
+a.NO
+{
+    COLOR: INHERIT;
+}
+
+a:HOVER
+{
+    COLOR: INHERIT;
+}
+
+s
+{
+    CURSOR: POINTER;
+}
+
+.HITHERE
+{
+    TEXT-ALIGN: CENTER;
+}
+
+/* why are you snooping around :< i wish someone would tell me. do people really try this hard? */
