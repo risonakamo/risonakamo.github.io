@@ -10,6 +10,7 @@ body
     DISPLAY: FLEX;
     HEIGHT: 100%;
     MARGIN: 0;
+    PADDING: 0 30PX 0 30PX;
     BACKGROUND-COLOR: #000;
     COLOR: #FFF;
     JUSTIFY-CONTENT: CENTER;
@@ -48,6 +49,16 @@ s
 .HITHERE
 {
     TEXT-ALIGN: CENTER;
+}
+
+.FOUR
+{
+    margin-bottom: 80px;
+}
+
+.AREYOULOOKING
+{
+    display: none;
 }
 
 /* why are you snooping around :< i wish someone would tell me. do people really try this hard? */
